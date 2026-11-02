@@ -1,0 +1,10 @@
+{
+  "name": "repoflags",
+  "version": "1.0.0",
+  "description": "Static pre-open check for unknown repositories. Nothing from the repository is executed.",
+  "author": { "name": "Logika.studio", "email": "tech-area@logikastudio.it" },
+  "homepage": "https://github.com/logika-studio/repoflags",
+  "repository": "https://github.com/logika-studio/repoflags",
+  "license": "MIT",
+  "keywords": ["security", "supply-chain", "agent-skill"]
+}

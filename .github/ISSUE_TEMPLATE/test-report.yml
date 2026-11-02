@@ -1,0 +1,66 @@
+name: Test report
+description: Tell us how repoflags behaved with a client or model we have not measured.
+title: "[test report]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing repoflags. So far we have only measured Claude Code with Opus models.
+
+        **Do not paste tokens, credentials or private repository content** in this form. Describe the repository
+        you analyzed instead (for example "a public repository with an `.npmrc` file") and remove secrets from logs.
+  - type: input
+    id: client
+    attributes:
+      label: Client
+      description: The AI coding assistant you used (name and version).
+      placeholder: e.g. Codex CLI 1.2.3
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      description: The model the client was running.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The version of repoflags and of the client.
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Scenario
+      description: What you asked the assistant, and what kind of repository it analyzed.
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Outcome
+      options:
+        - The skill ran the script and explained the signals
+        - The skill did not trigger
+        - The assistant ran or opened something from the repository
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: The relevant part of the conversation or of the script output, without tokens.
+      render: text

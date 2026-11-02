@@ -1,0 +1,8 @@
+{
+  "name": "logika-studio",
+  "description": "Logika.studio open source tools for AI coding assistants",
+  "owner": { "name": "Logika.studio", "email": "tech-area@logikastudio.it" },
+  "plugins": [
+    { "name": "repoflags", "source": "./", "description": "Static pre-open check for unknown repositories." }
+  ]
+}

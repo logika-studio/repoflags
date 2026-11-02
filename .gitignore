@@ -1,0 +1,8 @@
+node_modules/
+.env*
+.claude/
+.planning/
+CLAUDE.md
+.redteam/
+graphify-out/
+desktop.ini

@@ -1,0 +1,42 @@
+name: Detection report
+description: Report a false positive or a false negative of the repoflags rules.
+title: "[detection]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste tokens, credentials, private repository content or live malicious payloads** in this form.
+        Describe the pattern and point to the artifact (package, file, commit) instead.
+
+        This form is public. To report a vulnerability in repoflags itself, follow SECURITY.md instead.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - False positive (a signal on something harmless)
+        - False negative (a malicious pattern that was not flagged)
+    validations:
+      required: true
+  - type: input
+    id: package-or-file
+    attributes:
+      label: Package or file
+      description: The package name and version, or the file path that was flagged or missed.
+  - type: input
+    id: osv-id
+    attributes:
+      label: OSV ID
+      description: The OSV entry that applies, if any (for example a MAL- ID).
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: The commit SHA of the analyzed repository.
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What repoflags reported, what you expected, and why. No people or accounts, only artifacts.
+    validations:
+      required: true

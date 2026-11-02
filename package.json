@@ -1,0 +1,14 @@
+{
+  "name": "repoflags",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Static pre-open check for unknown repositories. Nothing from the analyzed repository is executed.",
+  "engines": {
+    "node": ">=18.20"
+  },
+  "scripts": {
+    "test": "cd tests && node --test"
+  }
+}
