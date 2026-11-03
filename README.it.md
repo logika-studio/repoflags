@@ -325,8 +325,6 @@ Altri strumenti gratuiti nello stesso ambito, ciascuno con il suo approccio:
 
 <div align="center">
 
-<img alt="logo di repoflags" src="docs/assets/logo.svg" width="56">
-
 Realizzato da [Logika.studio](https://logikastudio.it/?utm_source=github&utm_medium=readme&utm_campaign=repoflags).
 
 <a href="https://logikastudio.it/?utm_source=github&utm_medium=readme&utm_campaign=repoflags">

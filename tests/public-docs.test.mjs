@@ -220,8 +220,8 @@ const forbiddenNames = (text, hashes = FORBIDDEN_NAME_HASHES) => nameCandidates(
 
 // R8 (D-116): images come only from the self-hosted SVG assets, shields.io static badges and the GitHub CI badge.
 // Release badges are out: there is no release yet (D-117). Version and Node badges follow package.json.
-const LOCAL_ASSETS = ['docs/assets/banner.svg', 'docs/assets/banner-dark.svg', 'docs/assets/logo.svg',
-  'docs/assets/logika-logo.svg', 'docs/assets/logika-logo-dark.svg'];
+const LOCAL_ASSETS = ['docs/assets/banner.svg', 'docs/assets/banner-dark.svg', 'docs/assets/logika-logo.svg',
+  'docs/assets/logika-logo-dark.svg'];
 const CI_BADGE = 'https://github.com/logika-studio/repoflags/actions/workflows/ci.yml/badge.svg';
 const SHIELDS_STATIC_RE = /^https:\/\/img\.shields\.io\/badge\/[A-Za-z0-9%._-]+(\?[A-Za-z0-9=&%._-]*)?$/;
 const PKG = JSON.parse(await fs.readFile(path.join(ROOT, 'package.json'), 'utf8'));
@@ -380,11 +380,18 @@ test('R9 self-check: guardText joins wrapped lines and MASK_HEAD follows the cod
 // R10 (review B WR-06): every quote of the best outcome is the string the script prints.
 // The release body is a work copy that is not in the public tree: found by name, checked only where it exists.
 const WORK_DIR = path.join(ROOT, '.plan' + 'ning');
+// Phase folders live in phases/ while a milestone is open and in milestones/<version>-phases/ once it is archived.
+async function phaseRoots() {
+  const archived = (await fs.readdir(path.join(WORK_DIR, 'milestones')).catch(() => []))
+    .filter((n) => n.endsWith('-phases')).sort().map((n) => path.join(WORK_DIR, 'milestones', n));
+  return [path.join(WORK_DIR, 'phases'), ...archived];
+}
 async function findReleaseNotes() {
-  const phases = path.join(WORK_DIR, 'phases');
-  for (const d of (await fs.readdir(phases).catch(() => [])).sort()) {
-    const hit = (await fs.readdir(path.join(phases, d)).catch(() => [])).find((n) => n.endsWith('RELEASE-NOTES.md'));
-    if (hit) return rel(path.join(phases, d, hit));
+  for (const phases of await phaseRoots()) {
+    for (const d of (await fs.readdir(phases).catch(() => [])).sort()) {
+      const hit = (await fs.readdir(path.join(phases, d)).catch(() => [])).find((n) => n.endsWith('RELEASE-NOTES.md'));
+      if (hit) return rel(path.join(phases, d, hit));
+    }
   }
   return null;
 }

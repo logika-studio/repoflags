@@ -314,8 +314,6 @@ Other free tools in the same space, each with its own approach:
 
 <div align="center">
 
-<img alt="repoflags logo" src="docs/assets/logo.svg" width="56">
-
 Made by [Logika.studio](https://logikastudio.it/?utm_source=github&utm_medium=readme&utm_campaign=repoflags).
 
 <a href="https://logikastudio.it/?utm_source=github&utm_medium=readme&utm_campaign=repoflags">

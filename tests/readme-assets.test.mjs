@@ -14,7 +14,7 @@ import { buildRuntimes } from '../scripts/run-matrix.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ASSETS_DIR = 'docs/assets';
-const ASSETS = ['banner.svg', 'banner-dark.svg', 'logo.svg', 'logika-logo.svg', 'logika-logo-dark.svg'].map((n) => `${ASSETS_DIR}/${n}`);
+const ASSETS = ['banner.svg', 'banner-dark.svg', 'logika-logo.svg', 'logika-logo-dark.svg'].map((n) => `${ASSETS_DIR}/${n}`);
 const READMES = ['README.md', 'README.it.md'];
 const MAX_BYTES = 15 * 1024;
 const G7_RE = new RegExp('sa' + 'fe', 'i');
@@ -133,11 +133,16 @@ test('A4 the example output in both READMEs is the whole real offline output on 
 // system come from buildRuntimes, never from a range written by hand. The release notes are a work copy that is not in
 // the public tree: found by name, checked only where they exist.
 async function releaseNotes() {
-  const phases = path.join(ROOT, '.plan' + 'ning', 'phases');
+  const work = path.join(ROOT, '.plan' + 'ning');
+  // Phase folders live in phases/ while a milestone is open and in milestones/<version>-phases/ once it is archived.
+  const archived = (await fs.readdir(path.join(work, 'milestones')).catch(() => []))
+    .filter((n) => n.endsWith('-phases')).sort().map((n) => path.join(work, 'milestones', n));
   const out = [];
-  for (const d of (await fs.readdir(phases).catch(() => [])).sort()) {
-    for (const n of await fs.readdir(path.join(phases, d)).catch(() => [])) {
-      if (n.endsWith('RELEASE-NOTES.md')) out.push(path.relative(ROOT, path.join(phases, d, n)));
+  for (const phases of [path.join(work, 'phases'), ...archived]) {
+    for (const d of (await fs.readdir(phases).catch(() => [])).sort()) {
+      for (const n of await fs.readdir(path.join(phases, d)).catch(() => [])) {
+        if (n.endsWith('RELEASE-NOTES.md')) out.push(path.relative(ROOT, path.join(phases, d, n)));
+      }
     }
   }
   return out;
