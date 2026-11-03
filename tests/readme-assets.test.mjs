@@ -14,7 +14,7 @@ import { buildRuntimes } from '../scripts/run-matrix.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ASSETS_DIR = 'docs/assets';
-const ASSETS = ['banner.svg', 'banner-dark.svg', 'logo.svg'].map((n) => `${ASSETS_DIR}/${n}`);
+const ASSETS = ['banner.svg', 'banner-dark.svg', 'logo.svg', 'logika-logo.svg', 'logika-logo-dark.svg'].map((n) => `${ASSETS_DIR}/${n}`);
 const READMES = ['README.md', 'README.it.md'];
 const MAX_BYTES = 15 * 1024;
 const G7_RE = new RegExp('sa' + 'fe', 'i');

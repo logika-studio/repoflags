@@ -220,7 +220,8 @@ const forbiddenNames = (text, hashes = FORBIDDEN_NAME_HASHES) => nameCandidates(
 
 // R8 (D-116): images come only from the self-hosted SVG assets, shields.io static badges and the GitHub CI badge.
 // Release badges are out: there is no release yet (D-117). Version and Node badges follow package.json.
-const LOCAL_ASSETS = ['docs/assets/banner.svg', 'docs/assets/banner-dark.svg', 'docs/assets/logo.svg'];
+const LOCAL_ASSETS = ['docs/assets/banner.svg', 'docs/assets/banner-dark.svg', 'docs/assets/logo.svg',
+  'docs/assets/logika-logo.svg', 'docs/assets/logika-logo-dark.svg'];
 const CI_BADGE = 'https://github.com/logika-studio/repoflags/actions/workflows/ci.yml/badge.svg';
 const SHIELDS_STATIC_RE = /^https:\/\/img\.shields\.io\/badge\/[A-Za-z0-9%._-]+(\?[A-Za-z0-9=&%._-]*)?$/;
 const PKG = JSON.parse(await fs.readFile(path.join(ROOT, 'package.json'), 'utf8'));
@@ -292,6 +293,15 @@ for (const file of [README_EN, README_IT]) {
     assert.ok(srcs.includes(CI_BADGE), 'CI badge');
     assert.match(raw, /<source media="\(prefers-color-scheme: dark\)" srcset="docs\/assets\/banner-dark\.svg">/);
     assert.match(raw, /<img [^>]*src="docs\/assets\/banner\.svg"/);
+  });
+
+  test(`R8 ${file}: the footer shows the Logika.studio logo, light and dark, linked to the CTA`, async () => {
+    const raw = await mustRead(file);
+    const tail = raw.slice(raw.lastIndexOf('<div align="center">'));
+    const link = (tail.match(/<a href="([^"]+)">\s*<picture>([\s\S]*?)<\/picture>\s*<\/a>/) || []);
+    assert.equal(link[1], CTA, 'the logo links to the CTA');
+    assert.match(link[2] ?? '', /<source media="\(prefers-color-scheme: dark\)" srcset="docs\/assets\/logika-logo-dark\.svg">/);
+    assert.match(link[2] ?? '', /<img alt="Logika\.studio" src="docs\/assets\/logika-logo\.svg"/);
   });
 }
 

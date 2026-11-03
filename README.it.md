@@ -329,4 +329,11 @@ Altri strumenti gratuiti nello stesso ambito, ciascuno con il suo approccio:
 
 Realizzato da [Logika.studio](https://logikastudio.it/?utm_source=github&utm_medium=readme&utm_campaign=repoflags).
 
+<a href="https://logikastudio.it/?utm_source=github&utm_medium=readme&utm_campaign=repoflags">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logika-logo-dark.svg">
+    <img alt="Logika.studio" src="docs/assets/logika-logo.svg" width="200">
+  </picture>
+</a>
+
 </div>

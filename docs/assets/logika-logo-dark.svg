@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 50 600 240" width="300" height="120" role="img" aria-labelledby="t">
+  <title id="t">Logika.studio</title>
+  <rect x="80" y="60" width="221" height="221" fill="#ECECEA"/>
+  <path d="M116 96h47v102h102v47H116z" fill="#111110"/>
+  <path d="M139 133V221H228" fill="none" stroke="#555550" stroke-width="1.5"/>
+  <g fill="#ECECEA">
+    <circle cx="139" cy="133" r="6"/>
+    <circle cx="139" cy="170" r="6"/>
+    <circle cx="139" cy="207" r="6"/>
+    <circle cx="153" cy="221" r="6"/>
+    <circle cx="190" cy="221" r="6"/>
+  </g>
+  <g fill="#E85D26">
+    <circle cx="139" cy="221" r="9"/>
+    <circle cx="228" cy="221" r="9"/>
+  </g>
+  <text x="379" y="177" font-family="Poppins, 'Segoe UI', ui-sans-serif, -apple-system, Helvetica, Arial, sans-serif" font-size="100" font-weight="300" fill="#ECECEA" textLength="266" lengthAdjust="spacingAndGlyphs">logika</text>
+  <text x="375" y="241" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="31" fill="#E85D26" textLength="122" lengthAdjust="spacingAndGlyphs">.studio</text>
+</svg>

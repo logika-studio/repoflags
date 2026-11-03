@@ -79,7 +79,7 @@ test('WR-03: createLimits keeps every millisecond value inside the Node timer ra
   for (const k of ['globalTimeoutMs', 'requestTimeoutMs', 'regexTimeoutMs']) assert.equal(v[k], 2147483647, k);
 });
 
-test('WR-04: no parseArgs option relies on `default` (added in Node 18.11, engines says >=18.3)', async () => {
+test('WR-04: no parseArgs option relies on `default` (added in Node 18.11; engines was >=18.3, now >=18.20)', async () => {
   const { OPTIONS } = await import('../skills/repoflags/scripts/repoflags.mjs');
   assert.ok(OPTIONS && typeof OPTIONS === 'object', 'OPTIONS must be exported for this check');
   for (const [name, spec] of Object.entries(OPTIONS)) assert.ok(!Object.hasOwn(spec, 'default'), name);

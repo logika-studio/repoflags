@@ -30,7 +30,7 @@ Options:
 Exit codes: 0 no signals found by these rules, 1 signals found, 2 error.
 `;
 
-// No `default` here: parseArgs supports it only from Node 18.11, engines says >=18.3 (review WR-04).
+// No `default` here: parseArgs supports it only from Node 18.11, engines once said >=18.3 (review WR-04); keep it portable.
 export const OPTIONS = {
   ref: { type: 'string' },
   format: { type: 'string' },
